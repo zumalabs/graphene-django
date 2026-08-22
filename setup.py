@@ -58,6 +58,7 @@ setup(
         "Framework :: Django :: 5.1",
         "Framework :: Django :: 5.2",
         "Framework :: Django :: 6.0",
+        "Framework :: Django :: 6.1",
     ],
     keywords="api graphql protocol rest relay graphene",
     packages=find_packages(exclude=["tests", "examples", "examples.*"]),
