@@ -11,6 +11,11 @@ from .filters import GlobalIDFilter, GlobalIDMultipleChoiceFilter
 
 GRAPHENE_FILTER_SET_OVERRIDES = {
     models.AutoField: {"filter_class": GlobalIDFilter},
+    # In Django 6+, BigAutoField and SmallAutoField no longer inherit from
+    # AutoField, so django-filter's MRO-based lookup skips the AutoField entry.
+    # Register them explicitly so they still resolve to GlobalIDFilter.
+    models.BigAutoField: {"filter_class": GlobalIDFilter},
+    models.SmallAutoField: {"filter_class": GlobalIDFilter},
     models.OneToOneField: {"filter_class": GlobalIDFilter},
     models.ForeignKey: {"filter_class": GlobalIDFilter},
     models.ManyToManyField: {"filter_class": GlobalIDMultipleChoiceFilter},
